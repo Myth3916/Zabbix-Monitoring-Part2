@@ -34,23 +34,26 @@
 ![Задание 1: Шаблон с CPU и RAM](screenshots/zabbix-template-cpu-ram.png)
 
 
-Задание 2
+### Задание 2
 
-Приведите ответ в свободной форме........
+Привязал кастомный шаблон `Custom System Monitoring` к хосту `zabbix-agent-vm` и проверил поступление данных.
 
-    Заполните здесь этапы выполнения, если требуется ....
-    Заполните здесь этапы выполнения, если требуется ....
-    Заполните здесь этапы выполнения, если требуется ....
-    Заполните здесь этапы выполнения, если требуется ....
-    Заполните здесь этапы выполнения, если требуется ....
+#### Этапы выполнения:
 
-Поле для вставки кода...
-....
-....
-....
-....
+1.  Убедился, что Zabbix Agent на `zabbix-agent-vm` работает и настроен на подключение к серверу `158.160.193.234`.
+2.  В веб-интерфейсе Zabbix перешёл в **Configuration → Hosts**.
+3.  Отредактировал хост `zabbix-agent-vm` и добавил шаблон `Custom System Monitoring` в раздел **Templates**.
+4.  Для Item `RAM Load Percentage` заменил ключ `vm.memory.pused` на UserParameter `custom.ram.pused`, чтобы избежать ошибки `Unsupported item key`.
+5.  Изменил тип значения для `RAM Load Percentage` на `Numeric (float)`, чтобы корректно обрабатывать дробные числа.
+6.  Проверил, что в **Monitoring → Latest data** поступают данные:
+    - `CPU Load Percentage`
+    - `RAM Load Percentage`
 
-При необходимости прикрепитe сюда скриншоты ![Название скриншота 2](ссылка на скриншот 2)
+![Привязка шаблона к хосту](screenshots/zabbix-host-template-linked.png)
+![Данные от zabbix-agent-vm](screenshots/zabbix-latest-data-agent-vm.png)
+![Настройки Item CPU Load Percentage](screenshots/zabbix-item-cpu-config.png)
+![Настройки Item RAM Load Percentage](screenshots/zabbix-item-ram-config.png)
+
 Задание 3
 
 Приведите ответ в свободной форме........
