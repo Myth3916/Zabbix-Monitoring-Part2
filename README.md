@@ -101,9 +101,9 @@ ps aux --no-headers | wc -l
 
 ```
 
-###Код Python-скрипта
+Код Python-скрипта
 
-``` ```
+```python
 #!/usr/bin/env python3
 import shutil
 import sys
@@ -124,5 +124,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-````
 
