@@ -87,36 +87,36 @@
     -   `Disk Free Percentage (Python)` с ключом `disk.free.percentage.python`.
 6.  Проверено, что данные поступают в **Monitoring → Latest data**.
 
-Поле для вставки кода...
-#!/bin/bash
+#### Код Bash-скрипта
 
-Скрипт возвращает количество запущенных процессов
+```bash
+#!/bin/bash
+# Скрипт возвращает количество запущенных процессов
 ps aux --no-headers | wc -l
 
+Код Python-скрипта
 
-
-``
-Поле для вставки кода...
 #!/usr/bin/env python3
 import shutil
 import sys
 
 def main():
-# Путь к корню файловой системы
-path = '/'
-try:
-total, used, free = shutil.disk_usage(path)
-# Вычисляем процент свободного места
-free_percent = (free / total) * 100
-# Выводим результат (Zabbix ожидает число)
-print(f"{free_percent:.2f}")
-except Exception as e:
-# Если произошла ошибка, выводим 0 или логируем (для простоты)
-print(0)
-sys.exit(1)
+    # Путь к корню файловой системы
+    path = '/'
+    try:
+        total, used, free = shutil.disk_usage(path)
+        # Вычисляем процент свободного места
+        free_percent = (free / total) * 100
+        # Выводим результат (Zabbix ожидает число)
+        print(f"{free_percent:.2f}")
+    except Exception as e:
+        # Если произошла ошибка, выводим 0 или логируем (для простоты)
+        print(0)
+        sys.exit(1)
 
-if name == "main":
-main()
+if __name__ == "__main__":
+    main()
+
 
 
 
