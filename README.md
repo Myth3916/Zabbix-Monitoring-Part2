@@ -99,9 +99,11 @@
 # Скрипт возвращает количество запущенных процессов
 ps aux --no-headers | wc -l
 
+```
+
 ###Код Python-скрипта
 
-```
+``` ```
 #!/usr/bin/env python3
 import shutil
 import sys
@@ -122,4 +124,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+````
 
