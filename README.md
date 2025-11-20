@@ -72,28 +72,55 @@
 ![Кастомный дашборд](screenshots/zabbix-dashboard.png)
 
 
+### Задание 4
 
+Созданы UserParameter на Bash и Python-скрипт, добавлены в шаблон.
 
+#### Этапы выполнения:
 
-
-
-
-
-
-Задание 4
-
-Приведите ответ в свободной форме........
-
-    Заполните здесь этапы выполнения, если требуется ....
-    Заполните здесь этапы выполнения, если требуется ....
-    Заполните здесь этапы выполнения, если требуется ....
-    Заполните здесь этапы выполнения, если требуется ....
-    Заполните здесь этапы выполнения, если требуется ....
+1.  На ВМ `zabbix-agent-vm` создан Bash-скрипт `/usr/local/bin/count_processes.sh`, возвращающий количество запущенных процессов.
+2.  В конфигурацию агента добавлен UserParameter: `UserParameter=count.processes.bash,/usr/local/bin/count_processes.sh`.
+3.  На ВМ `zabbix-agent-vm` создан Python-скрипт `/usr/local/bin/disk_free_percentage.py`, возвращающий свободное место на диске `/` в процентах.
+4.  В конфигурацию агента добавлен UserParameter: `UserParameter=disk.free.percentage.python,/usr/local/bin/disk_free_percentage.py`.
+5.  В шаблон `Custom System Monitoring` добавлены Items:
+    -   `Number of Running Processes (Bash)` с ключом `count.processes.bash`.
+    -   `Disk Free Percentage (Python)` с ключом `disk.free.percentage.python`.
+6.  Проверено, что данные поступают в **Monitoring → Latest data**.
 
 Поле для вставки кода...
-....
-....
-....
-....
+#!/bin/bash
 
-При необходимости прикрепитe сюда скриншоты ![Название скриншота](ссылка на скриншот)
+Скрипт возвращает количество запущенных процессов
+ps aux --no-headers | wc -l
+
+
+
+``
+Поле для вставки кода...
+#!/usr/bin/env python3
+import shutil
+import sys
+
+def main():
+# Путь к корню файловой системы
+path = '/'
+try:
+total, used, free = shutil.disk_usage(path)
+# Вычисляем процент свободного места
+free_percent = (free / total) * 100
+# Выводим результат (Zabbix ожидает число)
+print(f"{free_percent:.2f}")
+except Exception as e:
+# Если произошла ошибка, выводим 0 или логируем (для простоты)
+print(0)
+sys.exit(1)
+
+if name == "main":
+main()
+
+
+
+![Данные от скриптов](screenshots/zabbix-latest-data-custom-scripts.png)
+![Item Bash](screenshots/zabbix-item-bash-config.png)
+![Item Python](screenshots/zabbix-item-python-config.png)
+
