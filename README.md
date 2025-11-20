@@ -87,6 +87,11 @@
     -   `Disk Free Percentage (Python)` с ключом `disk.free.percentage.python`.
 6.  Проверено, что данные поступают в **Monitoring → Latest data**.
 
+![Данные от скриптов](screenshots/zabbix-latest-data-custom-scripts.png)
+![Item Bash](screenshots/zabbix-item-bash-config.png)
+![Item Python](screenshots/zabbix-item-python-config.png)
+
+
 #### Код Bash-скрипта
 
 ```bash
