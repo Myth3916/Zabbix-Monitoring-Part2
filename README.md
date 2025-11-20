@@ -99,8 +99,9 @@
 # Скрипт возвращает количество запущенных процессов
 ps aux --no-headers | wc -l
 
-Код Python-скрипта
+###Код Python-скрипта
 
+```
 #!/usr/bin/env python3
 import shutil
 import sys
@@ -121,11 +122,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
-
-![Данные от скриптов](screenshots/zabbix-latest-data-custom-scripts.png)
-![Item Bash](screenshots/zabbix-item-bash-config.png)
-![Item Python](screenshots/zabbix-item-python-config.png)
 
